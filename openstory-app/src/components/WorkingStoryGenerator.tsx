@@ -1090,7 +1090,9 @@ const StoryGenerator: React.FC = () => {
   const [formWarnings, setFormWarnings] = useState<string[]>([]);
   const [formSuggestions, setFormSuggestions] = useState<string[]>([]);
   const [regenerationAttempts, setRegenerationAttempts] = useState<number>(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [usingDeepSeek, setUsingDeepSeek] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [deepSeekProvider, setDeepSeekProvider] = useState<string>('');
 
   // 🎙️ STATI PER NARRAZIONE VOCALE

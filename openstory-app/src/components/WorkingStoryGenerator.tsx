@@ -2927,52 +2927,7 @@ Esempio formato: "detailed portrait of [character], [action], [setting], [lighti
         </StatusMessage>
       )}
 
-      {/* Messaggio Informativo Modello Ottimizzato per Limiti */}
-      {(apiKey && apiKey.startsWith('sk-or-v1-')) && (
-        <StatusMessage type="success">
-          <strong>🔄 CONFIGURAZIONE ANTI-LIMITI + G4F ATTIVA!</strong><br/>
-          🏆 <strong>MODELLI PRINCIPALI NUOVI</strong>: <code>Gemini 2.0 Flash, Llama 4 Scout, DeepSeek Prover V2</code><br/>
-          ✅ Token ottimizzati: <code>5000 token</code> per massima qualità (Gemini 2.0 Flash)<br/>
-          ✅ Sistema fallback: <code>14 modelli OpenRouter</code> + <code>DeepSeek gratuito</code><br/>
-          🆓 <strong>Backup gratuito</strong>: <code>DeepSeek R1, DeepSeek V3, Reasoning avanzato</code><br/>
-          🎯 <strong>Risultato atteso</strong>: Storie sempre disponibili con modelli di ultima generazione
-        </StatusMessage>
-      )}
 
-      {/* Messaggio successo DeepSeek */}
-      {deepSeekProvider && !usingDeepSeek && (
-        <StatusMessage type="success">
-          <strong>✅ STORIA GENERATA CON DEEPSEEK!</strong><br/>
-          🧠 Provider utilizzato: <code>{deepSeekProvider}</code><br/>
-          💡 <strong>Modelli potenti gratuiti</strong> - Qualità superiore senza costi<br/>
-          🚀 Reasoning avanzato e creatività di alto livello
-        </StatusMessage>
-      )}
-
-      {/* 🎙️ Messaggio Informativo OpenVoice */}
-      <StatusMessage type="info">
-        <strong>🎙️ NARRAZIONE VOCALE OPENVOICE INTEGRATA!</strong><br/>
-        ✅ <strong>Genera narrazioni vocali</strong> per ogni sezione della storia (Prologo, Atti)<br/>
-        🎭 <strong>Voci ottimizzate</strong> per tipo di sezione con emozioni appropriate<br/>
-        🇮🇹 <strong>Supporto italiano</strong> con accenti personalizzabili e controllo velocità<br/>
-        💾 <strong>Download audio</strong> in formato WAV per ogni sezione o tutte insieme<br/>
-        🔄 <strong>Fallback TTS browser</strong> se OpenVoice non è disponibile<br/>
-        🎯 <strong>Configurazione</strong>: Imposta <code>REACT_APP_OPENVOICE_API_URL</code> nel file .env
-      </StatusMessage>
-
-      {/* 🎨 Messaggio Informativo Prompt Fooocus */}
-      <StatusMessage type="info" style={{ 
-        background: 'linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 140, 0, 0.1))',
-        borderColor: 'rgba(255, 165, 0, 0.3)'
-      }}>
-        <strong>🎨 GENERAZIONE PROMPT FOOOCUS INTEGRATA!</strong><br/>
-        ✅ <strong>Genera prompt dettagliati</strong> per ogni sezione della storia ottimizzati per Fooocus<br/>
-        🖼️ <strong>Prompt professionali</strong> con soggetto, ambientazione, stile artistico e atmosfera<br/>
-        📋 <strong>Copia facile</strong> negli appunti per uso immediato in Fooocus<br/>
-        🎯 <strong>Ottimizzazione AI</strong> per scene iconiche e visivamente impattanti<br/>
-        🎨 <strong>Formato standard</strong> compatibile con Fooocus e altri generatori di immagini AI<br/>
-        💡 <strong>Istruzioni</strong>: Genera i prompt, copiali e incollali in Fooocus per creare le immagini
-      </StatusMessage>
       
       <form onSubmit={generateStory}>
         {/* 🎛️ Selezione Genere Dinamica */}

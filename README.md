@@ -1,5 +1,7 @@
 # 📚 OpenStory - Generatore di Storie AI Avanzato
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kokainekowbo/Openstory)
+
 ## 🚀 **VERSIONE 2.8.0 - CONFIGURAZIONE OTTIMIZZATA**
 
 ### ✨ **CARATTERISTICHE PRINCIPALI**

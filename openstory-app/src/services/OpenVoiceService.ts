@@ -534,6 +534,7 @@ export class OpenVoiceService {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const result = await response.json();
       
       return {

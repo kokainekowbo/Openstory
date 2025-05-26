@@ -461,6 +461,7 @@ const VoiceStatus = styled.div<{ type: 'generating' | 'success' | 'error' }>`
   `}
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const VoiceOptionsPanel = styled.div`
   background: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -1042,6 +1043,7 @@ const FoocusHeader = styled.div`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FoocusControls = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -2892,7 +2894,7 @@ Esempio formato: "detailed portrait of [character], [action], [setting], [lighti
     if (story) {
       detectStoryLanguage();
     }
-  }, [story]);
+  }, [story, detectStoryLanguage]);
 
   /**
    * Aggiorna un parametro vocale specifico
@@ -3499,7 +3501,7 @@ Esempio formato: "detailed portrait of [character], [action], [setting], [lighti
                   <VoiceParameter>
                     <label>
                       Tonalità
-                      <span className="parameter-value">{voiceOptions.pitch || 0 > 0 ? '+' : ''}{voiceOptions.pitch || 0}</span>
+                      <span className="parameter-value">{(voiceOptions.pitch || 0) > 0 ? '+' : ''}{voiceOptions.pitch || 0}</span>
                     </label>
                     <VoiceSlider
                       type="range"

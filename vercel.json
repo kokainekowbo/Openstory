@@ -1,21 +1,11 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd openstory-app && npm install && npm run build",
+  "outputDirectory": "openstory-app/build",
+  "framework": null,
+  "rewrites": [
     {
-      "src": "openstory-app/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/openstory-app/build/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 } 

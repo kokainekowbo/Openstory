@@ -1,14 +1,21 @@
 {
   "version": 2,
-  "name": "openstory",
-  "buildCommand": "cd openstory-app && npm install && npm run build",
-  "outputDirectory": "openstory-app/build",
-  "installCommand": "cd openstory-app && npm install",
-  "framework": "create-react-app",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "openstory-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/openstory-app/build/index.html"
     }
   ]
 } 

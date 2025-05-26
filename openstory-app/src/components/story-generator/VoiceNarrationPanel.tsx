@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme, mixins } from '../../theme/designSystem';
 import Button from '../ui/Button';
 import { Input } from '../ui/Input';
-import OpenVoiceService, { VoiceOptions, VoiceProfile, NarrationResponse } from '../../services/OpenVoiceService';
+import { OpenVoiceService, VoiceOptions, VoiceProfile, NarrationResponse } from '../../services/VoiceService';
 
 // 🎙️ VOICE NARRATION PANEL - Pannello per narrazione vocale delle storie
 // Integrazione completa con OpenVoice per TTS e voice cloning

@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# OpenVoice server (repository esterno)
+OpenVoice_server/
+
+# File di backup
+*.backup
+openstory-app/.env.backup
+openstory-app/src/.env

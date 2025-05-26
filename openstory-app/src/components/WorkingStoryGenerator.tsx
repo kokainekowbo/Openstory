@@ -2878,7 +2878,7 @@ Esempio formato: "detailed portrait of [character], [action], [setting], [lighti
   /**
    * Rileva la lingua del testo della storia
    */
-  const detectStoryLanguage = () => {
+  const detectStoryLanguage = React.useCallback(() => {
     if (story) {
       const detected = OpenVoiceService.detectLanguage(story);
       setDetectedLanguage(detected);
@@ -2887,7 +2887,7 @@ Esempio formato: "detailed portrait of [character], [action], [setting], [lighti
       const confidence = Math.min(95, 60 + (story.length / 100));
       setLanguageConfidence(confidence);
     }
-  };
+  }, [story, setDetectedLanguage, setLanguageConfidence]);
 
   // Rileva automaticamente la lingua quando la storia cambia
   React.useEffect(() => {

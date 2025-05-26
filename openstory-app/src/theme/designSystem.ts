@@ -166,10 +166,16 @@ export const theme = {
 
   // 📱 BREAKPOINTS
   breakpoints: {
-    mobile: '768px',
-    tablet: '1024px',
-    desktop: '1200px',
-    wide: '1440px'
+    xs: '320px',      // Smartphone piccoli
+    sm: '480px',      // Smartphone
+    md: '768px',      // Tablet portrait
+    lg: '1024px',     // Tablet landscape / Desktop piccolo
+    xl: '1200px',     // Desktop
+    xxl: '1440px',    // Desktop large
+    mobile: '768px',  // Backward compatibility
+    tablet: '1024px', // Backward compatibility
+    desktop: '1200px',// Backward compatibility
+    wide: '1440px'    // Backward compatibility
   },
 
   // 🎯 SHADOWS
@@ -281,12 +287,151 @@ export const mixins = {
     &::placeholder {
       color: ${theme.colors.text.muted};
     }
+    
+    /* Mobile optimizations */
+    @media (max-width: ${theme.breakpoints.md}) {
+      padding: ${theme.spacing[4]} ${theme.spacing[3]};
+      font-size: 16px; /* Prevents zoom on iOS */
+      min-height: 44px; /* Touch target size */
+    }
   `,
   
-  // Responsive utilities
+  // Mobile-specific mixins
+  mobileContainer: `
+    padding: ${theme.spacing[4]};
+    margin: ${theme.spacing[2]};
+    
+    @media (max-width: ${theme.breakpoints.sm}) {
+      padding: ${theme.spacing[3]};
+      margin: ${theme.spacing[1]};
+    }
+  `,
+  
+  mobileGrid: `
+    display: grid;
+    gap: ${theme.spacing[4]};
+    grid-template-columns: 1fr;
+    
+    @media (min-width: ${theme.breakpoints.md}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: ${theme.breakpoints.lg}) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  `,
+  
+  mobileButton: `
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: ${theme.spacing[2]};
+    padding: ${theme.spacing[3]} ${theme.spacing[6]};
+    border-radius: ${theme.borderRadius.lg};
+    font-weight: ${theme.typography.fontWeight.semibold};
+    transition: ${theme.animations.smooth};
+    cursor: pointer;
+    border: none;
+    min-height: 48px; /* Touch target */
+    font-size: ${theme.typography.fontSize.base};
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    
+    @media (max-width: ${theme.breakpoints.md}) {
+      width: 100%;
+      padding: ${theme.spacing[4]} ${theme.spacing[6]};
+      font-size: ${theme.typography.fontSize.lg};
+    }
+  `,
+  
+  mobileText: `
+    font-size: ${theme.typography.fontSize.base};
+    line-height: ${theme.typography.lineHeight.relaxed};
+    
+    @media (max-width: ${theme.breakpoints.md}) {
+      font-size: ${theme.typography.fontSize.sm};
+    }
+    
+    @media (max-width: ${theme.breakpoints.sm}) {
+      font-size: ${theme.typography.fontSize.xs};
+    }
+  `,
+  
+  touchOptimized: `
+    /* Increase touch targets */
+    min-height: 44px;
+    min-width: 44px;
+    
+    /* Improve touch feedback */
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+    touch-action: manipulation;
+    
+    /* Prevent text selection on touch */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  `,
+  
+  scrollOptimized: `
+    /* Smooth scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    
+    /* Custom scrollbar for mobile */
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 215, 0, 0.3);
+      border-radius: 2px;
+    }
+  `,
+  
+  // Responsive utilities - Mobile First Approach
+  xs: `@media (max-width: ${theme.breakpoints.xs})`,
+  sm: `@media (max-width: ${theme.breakpoints.sm})`,
+  md: `@media (max-width: ${theme.breakpoints.md})`,
+  lg: `@media (max-width: ${theme.breakpoints.lg})`,
+  xl: `@media (max-width: ${theme.breakpoints.xl})`,
+  xxl: `@media (max-width: ${theme.breakpoints.xxl})`,
+  
+  // Min-width queries (mobile-first)
+  minSm: `@media (min-width: ${theme.breakpoints.sm})`,
+  minMd: `@media (min-width: ${theme.breakpoints.md})`,
+  minLg: `@media (min-width: ${theme.breakpoints.lg})`,
+  minXl: `@media (min-width: ${theme.breakpoints.xl})`,
+  minXxl: `@media (min-width: ${theme.breakpoints.xxl})`,
+  
+  // Backward compatibility
   mobile: `@media (max-width: ${theme.breakpoints.mobile})`,
   tablet: `@media (max-width: ${theme.breakpoints.tablet})`,
-  desktop: `@media (min-width: ${theme.breakpoints.desktop})`
+  desktop: `@media (min-width: ${theme.breakpoints.desktop})`,
+  
+  // Touch device detection
+  touch: `@media (hover: none) and (pointer: coarse)`,
+  
+  // Orientation queries
+  portrait: `@media (orientation: portrait)`,
+  landscape: `@media (orientation: landscape)`,
+  
+  // High DPI displays
+  retina: `@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)`,
+  
+  // Mobile-specific utilities
+  mobileOnly: `@media (max-width: ${theme.breakpoints.md}) and (hover: none)`,
+  tabletOnly: `@media (min-width: ${theme.breakpoints.md}) and (max-width: ${theme.breakpoints.lg})`,
+  desktopOnly: `@media (min-width: ${theme.breakpoints.lg})`
 };
 
 // 🎯 COMPONENT VARIANTS

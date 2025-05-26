@@ -51,6 +51,20 @@ const Container = styled.div`
   border-radius: 20px;
   color: #f5f5f5;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  
+  /* Mobile-first responsive design */
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.75rem;
+    margin: 0.25rem;
+    border-radius: 12px;
+  }
 `;
 
 const Title = styled.h1`
@@ -60,6 +74,18 @@ const Title = styled.h1`
   margin-bottom: 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   ${css`animation: ${pulse} 2s ease-in-out infinite;`}
+  
+  /* Mobile responsive typography */
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
 `;
 
 const FormSection = styled.div`
@@ -68,6 +94,19 @@ const FormSection = styled.div`
   border-radius: 15px;
   border: 1px solid rgba(255, 215, 0, 0.3);
   margin-bottom: 2rem;
+  
+  /* Mobile responsive padding */
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
 `;
 
 const SectionTitle = styled.h3`
@@ -85,6 +124,21 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  
+  /* Mobile-first responsive grid */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+  }
+  
+  /* Tablet optimization */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 `;
 
 const InputGroup = styled.div`
@@ -124,6 +178,7 @@ const Select = styled.select`
   color: #f5f5f5;
   font-size: 1rem;
   transition: border-color 0.3s;
+  min-height: 44px; /* Touch target size */
 
   &:focus {
     outline: none;
@@ -134,6 +189,18 @@ const Select = styled.select`
     background: #2a2a2a;
     color: #f5f5f5;
     padding: 0.5rem;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    padding: 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+    font-size: 16px;
   }
 `;
 
@@ -151,6 +218,20 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: #ffd700;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    padding: 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 120px;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+    min-height: 100px;
+    font-size: 16px;
   }
 `;
 
@@ -189,10 +270,23 @@ const Button = styled.button`
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   margin-top: 2rem;
+  min-height: 48px; /* Touch target size */
+  
+  /* Touch optimizations */
+  -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+  touch-action: manipulation;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+  }
+  
+  /* Mobile hover alternative */
+  @media (hover: none) and (pointer: coarse) {
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
   }
 
   &:disabled {

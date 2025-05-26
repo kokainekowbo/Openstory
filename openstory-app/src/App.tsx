@@ -16,12 +16,30 @@ const Main = styled.main`
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  
+  /* Mobile-first responsive padding */
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.75rem 0.25rem;
+  }
 `;
 
 const HeaderContainer = styled.header`
   background-color: #0a0a0a;
   padding: 1rem;
   box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
+  
+  /* Mobile responsive padding */
+  @media (max-width: 768px) {
+    padding: 0.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -30,6 +48,17 @@ const HeaderContent = styled.div`
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  
+  /* Mobile responsive layout */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -43,12 +72,34 @@ const Logo = styled.div`
   span {
     color: #f5f5f5;
   }
+  
+  /* Mobile responsive typography */
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  
+  /* Mobile responsive navigation */
+  @media (max-width: 768px) {
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -56,9 +107,33 @@ const NavLink = styled(Link)`
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  min-height: 44px; /* Touch target size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Touch optimizations */
+  -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+  touch-action: manipulation;
   
   &:hover {
     color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+  }
+  
+  /* Mobile touch feedback */
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(0.98);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.25rem;
   }
 `;
 

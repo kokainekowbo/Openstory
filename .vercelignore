@@ -1,0 +1,12 @@
+app/
+src/
+docs/
+public/
+*.bat
+*.md
+!README.md
+.git/
+node_modules/
+.env
+openstory-app/node_modules/
+openstory-app/.env 

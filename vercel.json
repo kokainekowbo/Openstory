@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "openstory-app",
+  "builds": [
+    {
+      "src": "openstory-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/openstory-app/$1"
+    }
+  ],
+  "buildCommand": "cd openstory-app && npm run build",
+  "outputDirectory": "openstory-app/build",
+  "installCommand": "cd openstory-app && npm install",
+  "framework": "create-react-app",
+  "env": {
+    "REACT_APP_OPENROUTER_API_KEY": "@react_app_openrouter_api_key",
+    "REACT_APP_DEEPSEEK_API_KEY": "@react_app_deepseek_api_key",
+    "REACT_APP_OPENVOICE_API_URL": "@react_app_openvoice_api_url"
+  }
+} 
